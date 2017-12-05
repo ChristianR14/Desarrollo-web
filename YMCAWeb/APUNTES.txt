@@ -1,0 +1,137 @@
+--getclients.js linea 35
+
+" <a syle='btn-danger' href='/updateClient?myVar="+tweet.id+"'Key>Update</a>" +
+
+
+
+--clients.js
+
+
+function updateClientDemo(entityKey)
+{
+  try
+  {
+
+    alert("token : " + sessionStorage.token);
+
+    var myData = new ClientObject(
+     $("#name").val(), 
+     $("#lastname").val(), 
+     $("#age").val(), 
+     $("#pago").val(), 
+     $("#sport").val() 
+     );
+    alert(myData.toJsonString());
+
+     jQuery.ajax({
+           type: "POST",
+           url: "https://segundoparcial-christian.appspot.com/_ah/api/clients_api/v1/clients/update",
+           data: myData.toJsonString(),
+           contentType: "application/json; charset=utf-8",
+           dataType: "json",
+           success: function (response) {
+                // do something
+                alert (response.code + " " + response.message);
+           },
+       
+           error: function (error) {            
+                // error handler
+                alert("error :" + error.message)
+           }
+
+       });
+
+   }
+   catch(error)
+   {
+    alert(error);
+   }
+
+}
+
+
+--updateClient.html
+
+<html>
+
+<head>
+ <title>
+   new - demo
+ </title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
+
+</head>
+<body>
+EntKey is:
+<script type="text/javascript">
+
+</script>
+<h1> Update Client </h1>
+
+      Name: <input type="text" id="name" value="" /> <br>
+      Last name: <input type="text" id="lastname" value="" /><br>
+      Age: <input type="text" id="age" value="" /> <br>
+      Payment: <input type="text" id="pago" value="" /><br>
+      Sport: <input type="text" id="sport" value="" /> <br>
+      entityKey: <input type="text" id="entityKey" value="entity" />
+
+ <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 text-center">
+              <label for="exampleInputEmail1"><i>Foto</i></label>
+               <br>
+               <img  src="" alt="Image preview" id="preview" style="width:128px;height:128px;" >
+               <br>
+               <input type="text" id="url_photo">
+               <br><input onchange="uploadDemo()" type="file"  id="uploaded_file" name="uploaded_file">
+              </div>
+
+
+<br>
+<button onclick="updateClientDemo()"> Update Client </button> 
+
+<br>
+<br>
+<script>
+	var entity = getParameterByName('myVar');
+	alert(entity);
+    document.getElementById("entityKey").value = entity;
+</script>
+<script src="app/getclients.js"></script>
+
+
+</body>
+</html>
+
+
+
+--public-rest-api
+
+ ('/updateClient', updateClientHandler),
+
+
+ class UpdateClientHandler(webapp2.RequestHandler):
+
+   def get(self):
+
+    template_context = {}
+    self.response.out.write(
+      self._render_template('updateClient.html', template_context))
+
+   def _render_template(self, template_name, context=None):
+    if context is None:
+     context = {}
+
+    template = jinja_env.get_template(template_name)
+    return template.render(context)  

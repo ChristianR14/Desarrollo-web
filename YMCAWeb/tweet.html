@@ -1,0 +1,81 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<!-- Template site title
+   ================================================== -->
+	<title>Parcial 2</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+
+	<!-- Bootstrap CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Animate CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/animate.min.css">
+
+	<!-- Font Icons
+   ================================================== -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/et-line-font.css">
+
+	<!-- Nivo Lightbox CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/nivo-lightbox.css">
+	<link rel="stylesheet" href="css/nivo_themes/default/default.css">
+
+	<!-- Owl Carousel CSS
+   ================================================== -->
+   	<link rel="stylesheet" href="css/owl.theme.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+
+	<!-- Main CSS
+   ================================================== -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Google web font 
+   ================================================== -->	
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+<script type="text/javascript">
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+</head>
+<body>
+
+
+
+ <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 text-center">
+
+
+		<h2> Add tweet</h2>
+
+			  title: <input type="text" id="title" value="" /> <br>
+			  descripcion: <input type="text" id="description" value="" />
+              <label for="exampleInputEmail1"><i>Foto</i></label>
+               <br>
+               <img  src="" alt="Image preview" id="preview" style="width:128px;height:128px;" >
+               <br>
+               <input type="text" id="url_photo">
+               <br><input onchange="uploadDemo()" type="file"  id="uploaded_file" name="uploaded_file">
+               <br>
+			   <button class="btn btn-success" onclick="addTweetDemo()"> Post </button> 
+              </div>
+
+
+
+
+
+<script src="app/tweet.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+
+<head>
+ <title>
+   new - demo
+ </title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+        function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+</script>
+
+</head>
+<body>
+
+<h1> Update instructor demo </h1>
+
+      Name: <input type="text" id="name" value="" /> <br>
+      Last name: <input type="text" id="lastname" value="" /><br>
+      Age: <input type="text" id="age" value="" /> <br>
+      Sport: <input type="text" id="sport" value="" /> <br>
+      entityKey: <input type="text" id="entityKey" value="entity" />
+
+ <div class="col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-10 text-center">
+              <label for="exampleInputEmail1"><i>Foto</i></label>
+               <br>
+               <img  src="" alt="Image preview" id="preview" style="width:128px;height:128px;" >
+               <br>
+               <input type="text" id="url_photo">
+               <br><input onchange="uploadDemo()" type="file"  id="uploaded_file" name="uploaded_file">
+              </div>
+
+
+<br>
+<button onclick="updateClientDemo()"> Update Client </button> 
+
+<br>
+<br>
+<script>
+	var entity = getParameterByName('myVar');
+	alert(entity);
+    document.getElementById("entityKey").value = entity;
+</script>
+<script src="app/indstructor.js"></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
